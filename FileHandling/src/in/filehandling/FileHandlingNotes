@@ -1,0 +1,166 @@
+File Handling
+====================
+
+-Common file Operations
+ CRUD operation
+ C-Create
+ R-Read
+ U-Update
+ D- Delete
+ 
+ -> To perform File operations Java language provided one predefined class java.io.File
+ -> java.io package contains set of classes & interfaces to perform input and output operations
+ 
+ File f = new File(StringName);
+ FileReader fr = new FileReader("fileName");
+ 
+ File Methods - java.api.
+ 
+ boolean mkdir() - To create an empty directory
+ boolean createNewFile() - To create an empty file
+ String[] list() - To get the content present inside the directory
+ 
+ 
+ boolean delete() - It is used to delete a file or directory based on given name
+ boolean deleteOnExit() - It is used to delete a file on exit
+ 
+ To write in java file in java program we need to have a link between java program and file which is also known as stream
+ Stream is of two type
+ 1 i/o Stream
+ 		|
+ 1.1 ByteStream (Video, audio,image,pdf) (provides below two classes)
+ 1.1.1 Input Stream - want to read binary data Ex FileInputStream
+ 1.1.2 Output Stream - want to write binary data Ex: FileOutputStream
+ 
+ 1.2 CharacterStream (text file) (Provides below two types of classes)
+ 1.2.1 Reader Stream - To Read character data such as BufferReader, FileReader etc.
+ 1.2.2 Writer Stream - To Write character data Ex; FileWriter, BufferedWriter etc.
+ 
+ =====================================================================================
+ 
+ File Operations:
+ 
+ To perform Operations on the file we need to use I/O streams
+ Using I/O streams we can establish link between Java Program and file
+ 
+ 					write
+ java Program ----------------- File
+ 
+ 					READ
+ java Program ------------------------- File
+ 
+ ============================================================
+ IOException - checked Exception : Caught at compile time occurs at Run time
+ 
+ isFile() - To check whether it's a file or not
+ isDirectory() - To check whether it's a directory or not
+ 
+ ===========================================================
+ FileWriter : When we go with FileWriter then it will check if the file with same name is available then oit will use it
+ if it's not available it will create it.
+ 
+ FileWRiter Fw = new FileWriter("abc.txt");
+ 
+ Method in FileWriter:
+ Fw.write("a");
+ After doing writ6e operation we need to forcibly send our data into file using flush method
+ Fw.flush();
+ Highly recommended to close the file, the close method removes the link between our java program and link
+ fw.close()
+ 
+ FileReader--
+ FileReader Fr = new FileReader("data.txt");
+ 
+ .read() - method only read one character at a time
+ When we reach at the end of a file the Ascii value will be -1.
+ 
+ For Demonstration Refer -- FileReaderDemo.
+ 
+ 
+====================================================================================
+
+To Read input data line by line, we use BufferReader
+
+java Program ---> BufferedReader ----> FileReader ----> File 
+BufferReader cannot talk to file directly
+
+FileReader fr= new FileReader("data.txt");
+BufferedReader br = new BufferedReader(fr);
+String line = br.line();
+
+
+BufferedReader is used to read line by line and FileReader is used to read character by character.
+
+==========================================================================
+
+System.out.println("hi");
+
+System -> Class available in java.lang package
+out -> static variable available in System class
+		-> The datatype of 'out' variable is PrintWriter.
+Println -> method belongs to PrintWriter class
+
+==================================================================
+
+We can also write in a file using Print writer
+The difference in File Writer and printWritter is 
+File Writter write data one by one
+where as PrintWriter write data all at once
+
+PrintWriter pw =new PrintWriter("file.txt");
+pw.write("Hello, My name is marrie. I would like to marry you");
+pw.flush();
+pw.close();
+
+=====================================================
+
+
+Serialization & DeSerialization:
+
+When we store data in the object that data will be available if our program is runninh.If
+our program get terminated then we will loose our objects and data available
+in the object.
+The process of Converting java object data into the file data in the forms of bits and bytes is known as Serialization.
+To store the data permanently we use Serialization.
+
+
+The Process of retrieving the object data from file is known as De-Serialization
+Converting File data back to Java Object is called as DeSerialization
+
+Note: To Perform Serialization or DeSerialization we have to implement special interface serializable [java.io.serializable].
+
+====================================================================================================================================
+While Serialization once we serialize our file then it creates a custom version UID.
+When we searialize the object JVM will assign .xlass file seialVersionUID to serialized file
+When we deserialize JVM will compare serialized file UID and .class file UID, if both ids are matching 
+then only deserialization will happen otherwise it will throw invalidClassExceptiopn
+To overcome this problem we can write our own serialVersionUID then JVM will not assign it.
+
+===========================================================================
+
+Transient : When we don't want a particular variable to serialize then we use transient keyword
+Transient keyword is used to ignore serialize proces
+Ex: Password
+
+
+================================================================================
+
+Can we do serialization for static variables?
+YEs, but we don't use static variable with serialization as they are used with class and 
+instant variable are with object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
