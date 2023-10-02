@@ -1,0 +1,41 @@
+Task : Work
+Single Tasking: Performing only one task at a time is called Single Tasking
+Multi Tasking:Performing multiple task at a time is called as Multi Tasking
+
+Multi Tasking - we can achieve in 2 types:
+1) Process Based Multitasking
+   Ex: Window OS
+   
+2) Thread Based Multitasking
+  Ex; To execute our program logic parellely
+  -> our program can complete quickly
+  
+Java supports Multithreading
+USe Cases:
+1> Send SMS to all customer at a time
+2> Send email/back statement to all customer at end of month
+
+Note: The main aim of multithreading is to complete more work in les time
+
+======================================================
+
+-> For every java program execution JVM will create one thread by default that thread is called as main thread
+
+Java Program to get main thread
+
+Thread currentThread = Thread.currentThread();
+System.out.println(currentThread);
+		
+
+================================================
+USER Defined Thread--
+
+In java we can crete USerDefinedthread in two ways--
+1> By Extending Thread class
+2> By Implementing Runnable interface
+
+ 
+
+
+
+
