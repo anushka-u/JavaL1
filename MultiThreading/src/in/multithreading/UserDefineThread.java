@@ -1,15 +1,4 @@
-/*
- * In this example both thread is executing parallelly 
- * You can see that in output that our output isn't in serialize way
- * Our main thread is being completely executed and parallelly our userdefined thread is also being executed
- * That is why we are getting o/p as 
- * Main thread Started
-  Main thread completed
-  My Thread started
-  I am run() method
-  My thread ended
 
- */
 package in.multithreading;
 
 public class UserDefineThread extends Thread {
@@ -33,3 +22,16 @@ public class UserDefineThread extends Thread {
 	}
 
 }
+
+/*
+* In this example both thread is executing parallelly 
+* You can see that in output that our output isn't in serialize way
+* Our main thread is being completely executed and parallelly our userdefined thread is also being executed
+* That is why we are getting o/p as 
+* Main thread Started
+ Main thread completed
+ My Thread started
+ I am run() method
+ My thread ended
+
+*/
