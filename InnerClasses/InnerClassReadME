@@ -14,3 +14,43 @@ Types of Inner Class
 	1.3 Anonymous Inner class\
 	
 2>Static Inner class : A inner class with static keyword is known as static inner class
+
+
+
+
+======================================================================
+Class Loader => 
+
+Class loaders are used to load .class file into JVM's memory
+java program(.java) ==> Compile ==> .class file ====> Run ====> JVM ===>O/p
+
+=> When we compile java program java compiler will convert Source code into byte codes
+=> When we run java program, JVM will load byte code and it will convert into machine code
+=> JVM will load .class file into it's memory
+=>JVM will use class loader to load .class file into it's memory
+
+In java we have three types of class loader -
+1) Bootstrap Class loader
+2) Extension class loader
+3) Application class loader
+
+Bootstrap class loader is responsible to load all pre-defined java classes available in JRE rt.jar file
+Note=> rt.jar means Runtime jar file,
+
+Extension class loader is responsible to load some java file available in jre=>lib=>ext folder
+
+Application Class loader is used to load our user defined classes.
+
+=================|
+ Bootstrap		 |
+ 	 ^			 |
+	| |			 |
+ Extension		 |
+ 	 ^			 |
+ 	| |			 |
+ Application 	 |
+ ================|
+ 
+ Class Loader Hierarchy = First Application class loader will try to load if not able to it will go to extension if it will not be in extension too it will
+ check in Bootstrap if not there will get ClassNotFoundError
+ 
