@@ -1,0 +1,48 @@
+Generics In Java
+===================
+-> Generics introduced in Java 1.5 version
+=> Generics are used to achieve type safety
+=> Using Generics we can write our class independent of data type
+
+The below method is tightly coupled and taking integer as a parameter
+public void m1()
+{
+	//logic
+}
+
+To overcome above issue we can use Generic in java
+
+package in.generics;
+
+public class GenericDemo<T> {
+	T obj;
+	
+	//method independent of data type
+	public void m1(T i)
+	{
+		System.out.println("I am generic method, You can send any type of argument to me "+ i);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		GenericDemo gd = new GenericDemo();
+		gd.m1("hi"); //string
+		gd.m1( 101); //integer
+		gd.m1(12.43f); //float
+	}
+
+}
+
+
+Generic can be used on class level, variable level, constructor level and method level.
+
+===================================================
+Generic with Wild cards
+===========================
+
+Demo<? extends Number> 
+
+ = above wild card represent Demo can take any class obj which is extending from Generic Class.
+
+

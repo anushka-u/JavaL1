@@ -1,0 +1,16 @@
+Inner Class
+================
+If a class is created in another class is called as Inner class.
+Inner class is also called as nested class
+=> Inner Classes are called as helper classes
+=> only available for outer class
+=-> hidden from other classes only outer class can action it's functionality
+
+Types of Inner Class
+=========================
+1> Non Static Inner CLass
+	1.1 Regular Inner Class
+	1.2 Method Local inner class
+	1.3 Anonymous Inner class\
+	
+2>Static Inner class : A inner class with static keyword is known as static inner class

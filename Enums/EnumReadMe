@@ -1,0 +1,19 @@
+Enums
+========================
+
+=> Enum is introduces in java v1.5
+=> Enum is a special data type in java
+=>Enum data type is used to create pre-defined Constants
+=> To declare constants using Enum,we will use 'enum' keyword
+=> Enum stands for enumeration
+=> Enum can be created in same class also in existing class
+
+
+When we want to declare pre-defined Constants then we go with Enum
+==================================================================
+Points to Remember about Enum:
+
+1- Enum constant cannot be override
+Enum doesn't support object creation
+Enum can't extend classes
+
