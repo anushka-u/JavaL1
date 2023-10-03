@@ -15,7 +15,7 @@ USe Cases:
 1> Send SMS to all customer at a time
 2> Send email/back statement to all customer at end of month
 
-Note: The main aim of multithreading is to complete more work in les time
+Note: The main aim of multithreading is to complete more work in less time
 
 ======================================================
 
@@ -30,11 +30,303 @@ System.out.println(currentThread);
 ================================================
 USER Defined Thread--
 
-In java we can crete USerDefinedthread in two ways--
+In java we can create USerDefinedthread in two ways--
 1> By Extending Thread class
 2> By Implementing Runnable interface
 
  
+Que: What is the difference between extending thread class and Runnable interface?
+Ans-> If we extend properties from thread class, we cannot extend properties from any other class
+because java doesn't support multiple inheritance
+if we implement Runnable interface then in future we can extend properties from any class based on
+requirement.
+
+=======================================================
+Thread Scheduler->
+
+Thread Scheduler is a program in the JVM which responsible to schedule thread execution and resource allocation
+required for the thread execution.
+
+-> When we call start method then Thread schedule will start its operation
+1> Allocating Resources
+2> Thread Scheduling
+3>Thread Execution by calling run() method
+
+==============================================
+
+start() vs run()
+
+-> To start thread execution we will call start() method
+t.start()
+
+->start method calls run() method internally
+-> inside run() method we will write the logic which should be executed by the thread.
+
+Note: We can call run() method directly, but the run() will execute like any other normal method by main thread and
+not like a thread method, so to start a thread we need to call start() method
+
+-> If we want to execute run() method as thread method then we should call start() method then internally it will
+call run() method (Thread Scheduler will take care of execution)
+
+========================================================================================================================
+
+What is Thread Life cycle?
+
+Thread Life Cycle contains several phases of Thread execution,
+1-New - A thread begins it's life cycle in new state, remians in new state untill we call start() method.
+2-Runnable - After calling start() method thread comes from new to runnable state. 
+3-Running - A thread comes to running state when thread schedular will pick up that thread for execution
+4-Blocked - waiting/sleeping : A thread is in waiting state if it waits for another thread to complete task. 
+5-Terminated - A thread enters into terminated state when a thread complete it's task. 
+
+
+=========================================================================
+Thread priority should be below 10.
+Thread.MAX_PRIORITY - 10
+THREAD.NORM_PRIORITY - 5
+THREAD.MIN_PRIORITY -1 
+
+.setName() - used to set name to thread
+
+THREAD.setPriority(1);
+.sleep(Argument in millisecond); This meethod is to block the thread for the amount of time we have passed in args
+
+===================================================================================
+
+The logic we want to execute will be inside run()
+One thread should be executed only one time, One program can be executed by multiple thread.
+
+NotE; We should not start one method mopre than one time, if we do we will get Exception
+
+
+=======================================================================
+
+Callable Interface
+------------------------>
+
+-> This interface was introduced in java v1-5
+USing callable interface we can create thread
+The interface contains call() method
+
+Syntax:
+
+	public Object call()
+	
+What is difference between runnable and callable?
+Runnable is a functional interface which contains Rum() method
+Callable is a functional interface which contains call() method
+
+-> Runnable run() method returns void (no return type)
+-> Callable call() method return object
+
+-> Runnable interface present in java.lang.package
+-> Callable interface present in java.util.concurent package
+
+==========================================================================
+
+If we want to execute parallel thread in our program it is recommended to go with ExecutorService
+
+-> ExecutorService is a concept which is used to submit multiple task to pool of thread.
+-> ExecutorService give us thread reusability, it will re use threads available in the pool to complete all the submitted task
+-> When we go with Runnable we go with start() and when we go with callable() we go with ExecutorService
+
+=======================================================================================================================
+
+Daemon Thread
+===================
+
+We have three types of threads in java--
+1> Default Thread created by JVM (Main thread)
+2> User Defined Thread (Thread class, Runnale Interface, Callable Interface)
+3> Daemon Thread 
+
+Note: The thread which runs in the background is called as Daemon Thread
+Ex: Garbage Collector is a daemon thread
+
+-> We can make our thread as Daemon thread by using setDaemon Method
+-> Daemon means low priority thread.
+
+JVm doesn't wait Daemon thread to terminate the program, 
+When JVM reaches end of main method and found if Daemon thread is running it terminates
+that daemon thread and it will terminate program
+=> Daemon thread is also known as low priority thread
+
+Garbage Collector is used to clean unused memory, we aren't running it in background
+
+==========================================================================================
+
+Synchronization
+-----------------------
+
+String => Immutable
+StringBuffer => Mutable c;lass & synchronized class (Thread Safe)
+StringBuilder => Mutable class and Not synchronized class. (Not Thread Safe)
+
+
+
+
+=> When multiple threads work on same object then there is high chance of getting data inconsistenct problem
+=> To overcome the data inconsistency problem we have Synchronized Thread safe
+Synchronized Thread safe means one Thread can access the object/resource at a time
+Not Synchronized means multiple thread can access the object/resource at a time
+
+
+=> Data inconsistency is reading incorrect data
+
+Below is Example of data inconsistency----- here multiple threads are trying to book ticket at a time
+public class Movie{
+	int availabletckt = 100;
+	public void run()
+	{
+		if(availabletckt>0)
+		{
+			//logic to book
+		}
+	}
+	psvm()
+	{
+		Thread t1 = new Thread();
+		Thread t2 = new Thread();
+		Thread t3 = new Thread();
+		
+		t1.........t20.......start
+	}
+}
+
+=> To avoid data inconsistency problem we need to use Synchronization concept
+Note: By using Synchronization we can achieve our thread safety but it will slow down our execution process
+
+How to achieve Synchronization?
+Using Synchronized keyword we can achieve synchronization.
+=>By using Synchronization method
+=> By using Synchronized block
+
+========================================================
+Syntax for Synchronized block: 
+
+public void m1()
+{
+	//pre-logic
+	synchronized(object)
+	{
+		//imp business logic
+	}
+	 //post logic
+}
+=========================================
+Syntax for Synchronized Method----
+
+public synchronized void m1()
+{
+	//logic to be executed
+}
+
+================================================
+Working With Thread using Anonymous Implementation
+---------------------------------------------------------
+package in.multithreading;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadsWithAnnonymusImplementation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ThreadsWithAnnonymusImplementation obj = new ThreadsWithAnnonymusImplementation();
+		//Anonymous Implementation of Thread class
+		Thread t = new Thread() {
+			public void run()
+			{
+				System.out.println("run() method - logic 1");
+			}
+		};
+		t.start();
+		
+		//Anonymous Implementation of Runnable Interface, Runnable is a s functional interface we cannot create object of it
+		
+		Runnable r = new Runnable() {
+			
+			public void run()
+			{
+				System.out.println("run() - logic 2");
+			}
+		};
+		Thread t2 =new Thread(r);
+		t2.start();
+		
+		//Anonymous Implementation of callable Interface
+		
+		Callable c = new Callable(){
+			public Object call() throws Exception{
+				System.out.println("Call() logic-3");
+				return "hi";
+			}
+		};
+		
+		ExecutorService exService = Executors.newFixedThreadPool(1);
+		exService.submit(c);
+	}
+
+}
+=============================================================================
+
+|=============|
+|Dead Lock	  |
+|=============|
+
+Dead lock means ambiguity problems among the threads
+
+Ex:
+Thread 1 is holding Resource 1 and Thread 2 is holding Resource 2
+Thread 1 is waiting for Resource 2 but not releasing Resource 1
+Thread 2 is waiting for Resource 1 but not releasing Resource 2
+As no one is releasing the resources, they will go into forever waiting process
+This is deadlock
+
+=> Once dead lock occurs we cannot do anything, so it is our responsibility so that 
+it never occurs
+=> once dead lock occurs our program will never terminate
+
+========================================================================================
+
+.join() : used to hold second thread execution till our first thread executing.
+join() is an instant method.
+
+yield() - used to give the chance for other thread also to execute parallely
+Yield is static method
+
+==========================================================================
+
+InterThread Communication =>
+-------------------------------------
+
+Used to achieve communication among the threads.
+We use wait(), notify() and notifyAll() to achieve InterThread Communication
+
+Why above three method is in object class not in Thread class?
+=> If these method available in Thread class then we have to extend Thread class, In future
+we can't extend from any other java class because java is against of Multiple Inheritance\
+
+=> If these method would have been available in Runnable interface then everybody implementing Runnable 
+interface needed to implement these methods even if they don't need interthread communication
+
+=> to overcome all these issue Java kept these method in Object class so that every class will have access to these.
+
+The reason wait(), notify() and notifyAll() is in Object class not in thread class because they want all class
+to access these methods without extending Thread or implementing Runnable.
+
+=====================================================================================================================
+
+Thread can also be created and called in below way
+new Thread(){
+	public void run()
+	{
+		//logic to be executed
+	}
+}.start();
 
 
 
