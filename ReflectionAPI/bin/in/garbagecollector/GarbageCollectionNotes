@@ -1,0 +1,39 @@
+Garbage Collection
+==========================
+Garbage Collection is the process of removing un-used / un-referenced objects from
+jvm heap area.
+
+=> Garbage Collections is an in-built process in JVM
+=> In JVM garbage collector is available to perform Garbage Collection
+=>Garbage Collector is a daemon thread
+
+=> we can call System.gc() method but it's not sure that JVM will call garbage collector for us
+To make object eligible for garbage collection we need to nullifying the object
+object = null;
+In Program := gcd is object so to nullify gcd we will do
+		gcd = null;
+when gc identify un-refrenced/null object then it will call finalize method and clean the heap area
+
+============================================================
+
+In java we have two ways to invoke GC-
+	System.gc()
+	Runtime.getRuntime().gc();
+
+Note: Even if we call above methods there is no guarantee that JVM will start GC immediately.
+GC execution process will be managed by JVM only
+
+How Garbage Collector works internally?
+=> Garbage Collection works in below phases-
+1> Stop the world : All threads running in JVM will stop for a millisecond
+2> Marking : Identifying the object which doesn't have reference, un-reference object will be marked
+3> Sweeping : Removing Marked Object
+4> Compaction : Adjusting the memory holes.
+
+Garbage Collector use Mark-Sweep Algorithm
+Mark-sweep algorithm marks un-unsed object and GC willsweep unreferenced object.
+
+Note: GC process will slow down our program execution so that Sun Microsystem didn't give the chance for
+programmers to perform Garbage Collection. It will be managed by JVM.
+
+

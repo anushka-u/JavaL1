@@ -1,0 +1,45 @@
+REFLECTION API
+======================
+=>  It is used to analyze our java classes
+like--
+what variable/method/constructor available?
+
+=> Class name along with package name is known as fully qualified classname
+
+By using Reflection API we can access private variable outside of the class.
+
+The ways to create object for a class is
+-using new operator
+-using newInstance()
+-using clone()
+using deserialization.
+
+
+Que: Can we call a method without creating object?
+
+//Invoking method using Reflection API
+---------------------------------------------
+package in.reflectionapi;
+
+import java.lang.reflect.Method;
+
+public class CallingMethodWithoutCreatingObject {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		
+		Class clz = Class.forName("in.reflectionapi.Student");
+		Method method = clz.getDeclaredMethod("getId");
+		Object obj = clz.newInstance();
+		method.invoke(obj, null);
+	}
+
+}
+
+--------------------------------------------------
+Difference in between ClassNotFound and NoClassDef Exception?
+
+=> If we group wrong class name in Class.forNAme("") then we will get ClassNotFoundException
+NoClassDefFoundError will occur if JVM doesn't able to .class file of particular class to load
+
+
