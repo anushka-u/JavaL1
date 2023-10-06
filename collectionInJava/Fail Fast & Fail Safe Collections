@@ -1,0 +1,29 @@
+Fail Fast & Fail Safe Collections
+========================================
+
+Collections are divided into two types
+Fail fast and fail safe collection
+
+When collections is throwing error immediately when we modify co0llection object 
+while traversing the collections are fail fast collection
+Ex : ArrayList, LinkedList. Vector,HashSet, LinkedHAshSet etc
+Fail Fast collections will throw concurrent modification exception when collection is modified
+
+
+=> Fail safe collection will not throw error even if we modify collection data(add/remove)
+Ex: CopyOnWriteArrayList, ConcurrentHashMap etc...
+
+Que: whta is the difference between hash map and week hash map?
+=> HashMap keys will have strong reference that means  they will maintain a reference hence they are
+not eligible for garbage collector
+
+=>WeakHashMap keys will have weak reference that means they are  eligible for Garbage Collection.
+=>Garbage collector will dominate WeakHashMap.
+
+WeakHashMap <Integer,String> whm = new WeakHashMap<>();
+		whm.put(1, "hi");
+		whm.put(2, "hello");
+		whm.put(3, "byee");
+		whm.put( 4, "Soya");
+		
+		System.out.println(whm);

@@ -1,0 +1,81 @@
+Referenced Data Types==>
+----------------------------
+
+Arrays: 
+========
+
+=>we can store group of values in single variable
+int[] a = new int[5];
+
+Limitations on Array==
+1 - Size is fixed
+2 - only homogeneous value can be stored
+
+_____________________________________________________________________
+
+Object Array ==>
+To overcome the issue with array we go with Object Array, Where we can store multiple kind of object
+
+Object[] a = new Object[100];
+a[0] =new Student(1,"Raju"]
+a[1] = new Employee(12,"Rani"]
+
+=========================================================================
+To overcome problems of Arrays Collection was introduced in Java
+=> Collections are used to store group of objects/values
+Collections are growable/dynamic
+=> we can store any type of data in collections
+=>Collection provides predefined method to do CRUD operations
+=>used to store group of objects
+
+Collections => Collections Framework
+
+Framework means ready made software
+=======================================================
+
+ArrayList Constructor
+===============================
+
+ArrayList al = new ArrayList();
+ArrayList al = new ArrayList(int_capacity);
+ArrayList al  = new ArrayList(Collection c);
+
+ Note: ArrayyList isn't good for inserting in middle operation
+ 
+ ==================================================
+ => Set based collection implements Map Concept <=
+ 
+ 
+ TREESET
+ /**
+ Implementation of Set interface
+		 * Tree set will maintain natural sorting order
+		 * Binary tree
+		 * null not allowed
+		 * In Tree Set only homogeneous value is allowed
+		 * The reason it doesn't contain heterogeneous order is because it maintains natural sorting order
+		 * it does compare value with it's previous value to maintain sorted order
+		 * if we will add a string and number then comparison will fail
+		 */
+
+		 Note: TreeSet should perform sorting so always it will compare new added object with old object. In order to 
+		 Compare object should be of same type otherwise we will get ClassCastException
+		 
+		 
+=============================================================================================
+
+Difference in between Collection, Collections and Collection Framework
+=>
+Collections is a container to store group of objects
+We have an interface with a name Collection (java.util)
+
+Collections is a a lass available in java.util package
+(providing ready made methods to perform operations
+
+Collection interface  & collections class are part of collections framework. Along with these 2 classes
+there are several other classes and interface in collections framework.
+
+
+
+
+		 

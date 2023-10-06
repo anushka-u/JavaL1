@@ -1,0 +1,28 @@
+Comparable And Comparator
+==============================
+If we want to apply sorting on User-Defined objects like Student, Employee, Product
+Customer etc then we have 2 approaches
+=============================================================================================
+1) Comparable (java.lang)
+2) Comparator (java.util)
+
+=> Comparable is a predefined interface available in java.lang package
+Comparable interface is having compareTo(Object o) it
+
+When we go for comparable interface, compareTO()  is used to compare an object with itself and return int value
+	=> if(obj1>obj2) +ve value
+	=> if(obj1<obj2) -ve value
+	=>if(obj1==obj2) = 0 
+	
+based on result it sorts it in ascending or descending order
+
+Note: Comparable interface will allow us to sort the data based on one value,If we
+want to change our sorting technique then we need to modify the class which is implementing 
+comparable interface
+
+=================================================================================================
+
+To overcome above issue we will go with comparator interface
+
+Comparator is a predefined interface available in java.util interface, 
+Comparator Interface have compare(Object O1, Object O2) method which take two parameters
