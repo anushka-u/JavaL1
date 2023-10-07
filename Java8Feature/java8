@@ -1,0 +1,255 @@
+Java 1.8 Features
+===================
+
+1) Interface changes
+	1.1) default methods
+	1.2)Static Methods
+
+2) Functional Interface
+	2.1) Predicate & Bi-Predicate
+	2.2)Consumer
+	2.3)Supplier
+	2.4)Function
+	
+3) LAMBDA EXPRESSION
+4) Method References & Constructor References
+5) STREAM API
+6)Optional Class (to avoid null pointer exception)
+7) Special iterator (spliterator)
+8) Collection Framework changes
+9) Date and Time API
+10) StringJoiner
+
+==============================================================
+Interface Changes
+------------------------
+
+=> Interface means collection of abstract default and static method
+--When we implement interface it's mandatory to implement all method of interface
+
+
+Functional Interface
+	2.1) Predicate & Bi-Predicate
+	2.2)Consumer
+	2.3)Supplier
+	2.4)Function
+	
+
+=================
+Predicate
+=================
+
+It is predefined functional interface which is used to check conditions and returns true or false value
+test()
+
+Example
+package in.newfeatures;
+
+import java.util.function.Predicate;
+
+public class CheckWithPredicate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] names = {"Anushka","Anupma","Aastha","Deeksha","Disha"};
+		Predicate<String> p = name ->name.startsWith("A");
+		
+		for(String name : names)
+		{
+			if(p.test(name)) {
+				System.out.println(name);
+			}
+			
+		}
+	}
+
+}
+
+========================
+Predicate Joining
+========================
+
+=> TO combine multiple predicates wwe will use Predicate joining
+ and() method
+ or() method
+ 
+ Task 1: Print empp names who are working in Hyderabad location in DB departmenr
+	
+
+======================================================================
+Supplier Functional Interface
+====================================================================
+=> Supplier is a predefined functional interface introduced in java 1.8v
+It contains only abstract method that is get() method
+Supplier interface will not take any input it will only returns the value
+get()
+
+Ex : OTP Generation
+
+
+======================================================================
+Consumer Functional Interface
+==================================================================
+
+Consumer is a predefined functional interface
+It contains one abstract method i.e accept(T t)
+Consumer will accept the input but won't give any output
+accept()
+
+====================================================================
+
+Function Functional Interface
+
+Function is a predefined interface
+It will take input and will return output
+apply()
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Lecture 4 
+---------------
+
+METHOD REFERENCES
+-----------------------
+
+Method REference = Reference to one method from another method
+	Consumer<String>consumer = (msg) -> System.out.println(msg);
+	
+Method references are short form of the lambda
+
+===============================================================================
+
+String joiner  :- 
+Java.util.StringJoiner class introduced in Java 1.8v
+used to join strings by using delimeter
+
+We can concat prefix and suffix while joinings strings using StringJoiner
+
+StringJoiner sj = new StringJoiner(CharSequence delim);
+StringJoiner sj = new StringJoiner(CharSequence delim, CharSequence prefix, CharSequence suffix);
+
+
+package in.newfeatures;
+
+import java.util.StringJoiner;
+
+public class StringJoinerDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		StringJoiner str = new StringJoiner("-");
+		str.add("Anushka");
+		str.add("You");
+		str.add("Can");
+		str.add("Do");
+		str.add("it");
+		
+		System.out.println(str);
+		
+		StringJoiner str2 = new StringJoiner("-","(",")");
+		str2.add("Anushka");
+		str2.add("You");
+		str2.add("Can");
+		str2.add("Do");
+		str2.add("it");
+		
+		System.out.println(str2);
+	}
+
+}
+============================================================================
+OPTIONAL CLASS
+============================================================================
+
+=> java.util.Optional class introduced in 1.8v
+Optional class is used to avoid NullPointer Exception in the program
+
+When we perform operation on value that doesn't exist then we get null pointer exception, to avaoid the exception of null pointer we need to perform null checks before performing operation on value.
+
+===============================================================================================
+DATE AND TIME API CHANGES
+===============================================================================================
+=> To overcome the problem of java.util.Date class java 1.8 introduced Date API changes
+=> In java 1.8v, new classes got introduced to deal with Date  & time functionalities
+
+1) java.time.LocalDate (it will deal with only date)
+2) java.time.LocalTime (It will deal with only time)
+3) java.time.LocalDateTime (It will deal with both date & time)
+4) Period = methods to find difference between 2 days
+5) Duration = methods to find the difference between two time stamps
+
+
+=========================================================================================================
+STREAM API
+====================================
+
+Stream API is used to process the data
+Stream in Java can be defined as sequence of elements that comes from a source
+Source of data for the stream can be array of collection
+
+
+FEW IMP PNT ABT STREAM
+----------------------------
+
+!) Stream isn't a ds, It means bunch of operations applied on soyrce data, Source can be collection or array
+2) Stream will not change original data structure of source, it will only
+process the data given by source
+
+====================================================================
+
+STREAM CREATION
+-------------------
+
+In java we can create Stream in 2 ways:
+	1) Stream.of(e1,e2,e3.....);
+	2)stream() method
+
+
+Stream Operations
+------------------------
+We can divide Stream API methods in two types
+1)Intermediate Operational methods
+2) Terminal Operational methods
+
+=> Intermediate Operational method will perform operations on the stream and return a new stream
+Example : filter(), map()
+
+=> Terminal Operational method will take input and will provide the result as output
+Example : sorted(),  Count().
+
+=> Filtering means getting required data from original data
+ Example
+ 	1- get even number from give numbers
+ 	2 - get employees whose salary are greater tha onr lakh 
+ 	
+ To apply filter on data Stream API provided filter() , It does take predicate as an input and returns output as boolean value
+
+=================================================================================================
+Mapping Operations
+-------------------------
+
+=> Mapping operations are used to transform the stream elements and return the transformed element as new stream
+
+=========================================================================================
+
+flatMap() is used to flaten list of streams into single stream
+===============================================================================
+Slicing Operations on Stream:
+
+1) distinct() ;To get unique element from streams
+2) limit(long maxSize) : Get list elements from the stream based on giver size
+3) skip(long n ): used to skip given number of elements from starting position of stream
+
+===========================================================================
+Matching Operations with Stream
+------------------------------------
+
+anyMatch() ->
+allMatch()
+noneMatch()
+
+ 
+
+ 
