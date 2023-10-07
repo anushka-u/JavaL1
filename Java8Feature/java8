@@ -246,9 +246,9 @@ Slicing Operations on Stream:
 Matching Operations with Stream
 ------------------------------------
 
-anyMatch() ->
-allMatch()
-noneMatch()
+anyMatch() -> if any of item from list matches it returns true
+allMatch() -> IT RETURNS TRUE ONLY IF ALL ELEMENT IN LIST SATISFIES THE CONDITION
+noneMatch() -> ONLY RETURNS TRUE IF NONE OF ELEMENT IN LIST SATISFIES THE CONDITION
 
  
 
