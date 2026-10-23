@@ -48,8 +48,7 @@ Remember these three rules:
 - A Stream is normally consumed only once. Create a new Stream from the source when you need another pipeline.
 
 2. How to create Streams
-   These methods help you obtain a Stream before processing anything.
-   Method	When to use	Example
+   These methods help you obtain a Stream before processing anything. Method	When to use	Example
    collection.stream()	Sequential processing	list.stream()
    collection.parallelStream()	Parallel processing when justified by workload	list.parallelStream()
    Stream.of(...)	Create a Stream from individual values	Stream.of(1, 2, 3)
